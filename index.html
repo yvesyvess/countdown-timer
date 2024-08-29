@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Countdown Timer</title>
+  <style>
+    #countdown {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 30px;
+      font-weight: bold;
+      color: #FF85B3;
+      background-color: #f0f0f0;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    .countdown-title {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .countdown-section {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    .countdown-number {
+      font-size: 40px;
+    }
+
+    .countdown-label {
+      font-size: 18px;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="countdown">
+    <div class="countdown-title">Assessment 2 Part B</div>
+    <div class="countdown-section">
+      <span class="countdown-number" id="days"></span>
+      <span class="countdown-label">DAYS</span>
+    </div>
+    <div class="countdown-section">
+      <span class="countdown-number" id="hours"></span>
+      <span class="countdown-label">HOURS</span>
+    </div>
+    <div class="countdown-section">
+      <span class="countdown-number" id="minutes"></span>
+      <span class="countdown-label">MINUTES</span>
+    </div>
+  </div>
+
+  <script>
+    function countdownTimer(deadline) {
+      const daysElement = document.getElementById('days');
+      const hoursElement = document.getElementById('hours');
+      const minutesElement = document.getElementById('minutes');
+      const interval = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = deadline - now;
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        daysElement.innerHTML = days;
+        hoursElement.innerHTML = hours;
+        minutesElement.innerHTML = minutes;
+        if (distance < 0) {
+          clearInterval(interval);
+          daysElement.innerHTML = "0";
+          hoursElement.innerHTML = "0";
+          minutesElement.innerHTML = "0";
+        }
+      }, 1000);
+    }
+    const deadline = new Date("Sep 30, 2024 14:00:00").getTime();
+    countdownTimer(deadline);
+  </script>
+</body>
+
+</html>
+<!-- partial -->
+  
+</body>
+</html>
